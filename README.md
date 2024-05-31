@@ -1,2 +1,3 @@
-# lseseri.github.io-
-Project for DSC80 at UCSD
+# Are there seasonal trends in average recipe ratings?
+
+
