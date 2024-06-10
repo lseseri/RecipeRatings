@@ -74,24 +74,16 @@ Below is the head of the finalized dataframe, `df`:
 
 ### Univariate Analysis
 
-I performed univariate analysis on the distribution of seasons based on when the recipes were posted.
+I performed univariate analysis on the distribution of average ratings. 
 
 <iframe
-  src="assets/fig_season-bar-plot.html"
+  src="assets/fig_rating-hist-plot.html"
   width="800"
   height="600"
   frameborder="0"
 ></iframe>
 
-
-I performed univariate analysis on the distribution of seasons based on when the review was posted.
-
-<iframe
-  src="assets/fig_interacted-bar-plot.html"
-  width="800"
-  height="600"
-  frameborder="0"
-></iframe>
+In this histogram, we can see that the graph is left skewed with a majority of the average ratings being between 4 and 5. This suggests that our data from food.com either includes only highly rated recipes or people on food.com, a majority of the time, tend to rate recipes higher than lower. 
 
 
 ### Bivariate Analysis
