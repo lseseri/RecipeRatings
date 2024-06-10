@@ -74,6 +74,8 @@ Below is the head of the finalized dataframe, `df`:
 
 ### Univariate Analysis
 
+I performed univariate analysis on the distribution of seasons based on when the recipes were posted.
+
 <iframe
   src="assets/fig_season-bar-plot.html"
   width="800"
@@ -81,6 +83,8 @@ Below is the head of the finalized dataframe, `df`:
   frameborder="0"
 ></iframe>
 
+
+I performed univariate analysis on the distribution of seasons based on when the review was posted.
 
 <iframe
   src="assets/fig_interacted-bar-plot.html"
