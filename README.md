@@ -34,6 +34,8 @@ Since I am trying to determine whether there is a relationship between seasons a
 
 ## Data Cleaning and Exploratory Data Analysis
 
+### Data cleaning
+
 To clean my data, I followed the pillars of data cleaning which are performing data quality checks, identifing and handling missing values, and performing transformations. However, before I began doing these steps, I merged the two datasets together into one dataset. 
 
 1. I left merged the `recipes` and  `interactions` dataset by the `id` and `recipe_id` columns since they both represent recipe's IDs. We do not merge from the user ID columns because the same person who posted the recipe is probably not the same person who posted the review. Also, we want to keep multiple recipes with the same name so we perform a left merge. 
@@ -62,8 +64,18 @@ To clean my data, I followed the pillars of data cleaning which are performing d
 
 Below is the head of the finalized dataframe, `df`:
 
-| name                               |   minutes | date_submitted      | date_interacted     |   rating |   average_rating |   num_calories |   total_fat |   sugar | season_submitted   | season_interacted   | season_category   |   days_between | dayofweek_recipe   | dayofweek_review   |\n|:-----------------------------------|----------:|:--------------------|:--------------------|---------:|-----------------:|---------------:|------------:|--------:|:-------------------|:--------------------|:------------------|---------------:|:-------------------|:-------------------|\n| 1 brownies in the world best ever  |        40 | 2008-10-27 00:00:00 | 2008-11-19 00:00:00 |        4 |                4 |          138.4 |          10 |      50 | fall               | fall                | cold              |             23 | Mon                | Wed                |\n| 1 in canada chocolate chip cookies |        45 | 2011-04-11 00:00:00 | 2012-01-26 00:00:00 |        5 |                5 |          595.1 |          46 |     211 | spring             | winter              | warm              |            290 | Mon                | Thurs              |\n| 412 broccoli casserole             |        40 | 2008-05-30 00:00:00 | 2008-12-31 00:00:00 |        5 |                5 |          194.8 |          20 |       6 | spring             | winter              | warm              |            215 | Fri                | Wed                |\n| 412 broccoli casserole             |        40 | 2008-05-30 00:00:00 | 2009-04-13 00:00:00 |        5 |                5 |          194.8 |          20 |       6 | spring             | spring              | warm              |            318 | Fri                | Mon                |\n| 412 broccoli casserole             |        40 | 2008-05-30 00:00:00 | 2013-08-02 00:00:00 |        5 |                5 |          194.8 |          20 |       6 | spring             | summer              | warm              |           1890 | Fri                | Fri                |
+| name                               |   minutes | date_submitted      | date_interacted     |   rating |   average_rating |   num_calories |   total_fat |   sugar | season_submitted   | season_interacted   | season_category   |   days_between | dayofweek_recipe   | dayofweek_review   |
+|:-----------------------------------|----------:|:--------------------|:--------------------|---------:|-----------------:|---------------:|------------:|--------:|:-------------------|:--------------------|:------------------|---------------:|:-------------------|:-------------------|
+| 1 brownies in the world best ever  |        40 | 2008-10-27 00:00:00 | 2008-11-19 00:00:00 |        4 |                4 |          138.4 |          10 |      50 | fall               | fall                | cold              |             23 | Mon                | Wed                |
+| 1 in canada chocolate chip cookies |        45 | 2011-04-11 00:00:00 | 2012-01-26 00:00:00 |        5 |                5 |          595.1 |          46 |     211 | spring             | winter              | warm              |            290 | Mon                | Thurs              |
+| 412 broccoli casserole             |        40 | 2008-05-30 00:00:00 | 2008-12-31 00:00:00 |        5 |                5 |          194.8 |          20 |       6 | spring             | winter              | warm              |            215 | Fri                | Wed                |
+| 412 broccoli casserole             |        40 | 2008-05-30 00:00:00 | 2009-04-13 00:00:00 |        5 |                5 |          194.8 |          20 |       6 | spring             | spring              | warm              |            318 | Fri                | Mon                |
+| 412 broccoli casserole             |        40 | 2008-05-30 00:00:00 | 2013-08-02 00:00:00 |        5 |                5 |          194.8 |          20 |       6 | spring             | summer              | warm              |           1890 | Fri                | Fri                |
 
+### Univariate Analysis
+
+
+### Bivariate Analysis
 
 <iframe
   src="assets/recipe_vs_rating-scatter-plot.html"
@@ -71,6 +83,8 @@ Below is the head of the finalized dataframe, `df`:
   height="600"
   frameborder="0"
 ></iframe>
+
+### Interesting Aggregates
 
 ## Assessment of Missingness
 
