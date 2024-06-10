@@ -1,3 +1,5 @@
+# Exploring the Seasonal Trends in Recipe Ratings
+
 # Introduction
 
 # Data Cleaning and Exploratory Data Analysis
