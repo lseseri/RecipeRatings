@@ -1,8 +1,8 @@
 # Exploring the Seasonal Trends in Recipe Ratings
 
-# Introduction
+## Introduction
 
-# Data Cleaning and Exploratory Data Analysis
+## Data Cleaning and Exploratory Data Analysis
 
 <iframe
   src="assets/recipe_vs_rating-scatter-plot.html"
@@ -11,14 +11,14 @@
   frameborder="0"
 ></iframe>
 
-# Assessment of Missingness
+## Assessment of Missingness
 
-# Hypothesis Testing
+## Hypothesis Testing
 
-# Framing a Prediction Problem
+## Framing a Prediction Problem
 
-# Baseline Model
+## Baseline Model
 
-# Final Model 
+## Final Model 
 
-# Fairness Analysis
+## Fairness Analysis
