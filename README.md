@@ -1,5 +1,6 @@
-# Are there seasonal trends in average recipe ratings?
+# Introduction
 
+# Data Cleaning and Exploratory Data Analysis
 
 <iframe
   src="assets/recipe_vs_rating-scatter-plot.html"
@@ -7,3 +8,15 @@
   height="600"
   frameborder="0"
 ></iframe>
+
+# Assessment of Missingness
+
+# Hypothesis Testing
+
+# Framing a Prediction Problem
+
+# Baseline Model
+
+# Final Model 
+
+# Fairness Analysis
