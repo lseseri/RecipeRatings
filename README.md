@@ -74,6 +74,21 @@ Below is the head of the finalized dataframe, `df`:
 
 ### Univariate Analysis
 
+<iframe
+  src="assets/fig_season-bar-plot.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+
+<iframe
+  src="assets/fig_interacted-bar-plot.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
 
 ### Bivariate Analysis
 
