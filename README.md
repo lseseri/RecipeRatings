@@ -22,14 +22,6 @@ The first dataset, `recipes`, consists of 83782 rows where each row is a recipe,
 
 The second dataset, `interactions`, consists of 731927 rows where each row is a review with a rating, and 5 columns with the following information:
 
-| Columns         | Description                                                                                                                                  |
-| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `user_id`            | User ID                                                                                                                                  |
-| `recipe_id`              | Recipe ID                                                                                                                                    |
-| `date`         | Date rating given                                                                                                                        |
-| `rating`  | Rating given                                                                                                                  |
-| `review`       | Text of review                                                                                                                     |
-
 | Columns     | Description          |
 | ----------- | -------------------- |
 | `user_id`   | User ID              |
@@ -38,6 +30,7 @@ The second dataset, `interactions`, consists of 731927 rows where each row is a 
 | `rating`    | Rating given         |
 | `review`    | Text of review       |
 
+Since I am trying to determine whether their is a relationship between seasons and recipes ratings I will focus on the columns `name`, `minutes`, `submitted`, and `nutrition` from the `recipes` dataset, and `date` and `rating` from the `interactions` dataset. For now, I will also need to include column such as `id` from the `recipes` dataset and `recipe_id` from the `interactions` dataset so I will be able to combine the two datasets. However, before I can begin separating out the relevant columns, I need to clean the data. 
 
 ## Data Cleaning and Exploratory Data Analysis
 
