@@ -17,6 +17,22 @@ The first dataset, `recipes`, consists of 83782 rows and 12 columns with the fol
 | `steps`          | In order text for recipe steps |
 | `description`    | User-provided description      |
 
+| Columns         | Description                                                                                                                                  |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| name            | Recipe name                                                                                                                                  |
+| id              | Recipe ID                                                                                                                                    |
+| minutes         | Minutes to make recipe                                                                                                                       |
+| contributor_id  | User ID who submitted recipe                                                                                                                 |
+| submitted       | Date recipe was submitted                                                                                                                    |
+| tags            | Tags for recipe from Food.com                                                                                                                |
+| nutrition       | Information in the form of [number of calories, total fat (PDV), sugar (PDV), sodium (PDV), protein (PDV), saturated fat (PDV), carbohydrates (PDV)] where PDV is percentage of daily value |
+| n_steps         | Number of steps                                                                                                                              |
+| steps           | In order text for recipe steps                                                                                                               |
+| description     | User-provided description                                                                                                                    |
+| ingredients     | List of ingredients required for the recipe                                                                                                  |
+| n_ingredients   | Number of ingredients required for the recipe                                                                                               |
+
+
 ## Data Cleaning and Exploratory Data Analysis
 
 <iframe
