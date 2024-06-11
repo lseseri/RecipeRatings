@@ -129,7 +129,7 @@ A column in the dataset that I think is Not Missing At Random (NMAR) is the `rev
 
 I decided to test if the missingness of `rating` depends on the `season_submitted` column, which is the season the recipe was submitted. For this permutation test, I used a significance level of 0.05 and test statistic of total variation distance (TVD) because I needed to measure the distance between two categorical distributions.
 
-**Null Hypothesis:** The distribution of the season when the recipe was submitted when rating is missing is the same as the distribution of the season when the recipe was submitted when the rating is not missing.**
+**Null Hypothesis:** The distribution of the season when the recipe was submitted when rating is missing is the same as the distribution of the season when the recipe was submitted when the rating is not missing.
 
 **Alternative Hypothesis:** The distribution of the season when the recipe was submitted when rating is missing is not the same as the distribution of the season when the recipe was submitted when the rating is not missing.
 
@@ -173,6 +173,12 @@ I decided to do a permuation test since I have two groups, the warmer seasons an
 Since my p-value of 0.0, as shown by the red line in the distribution above, is less than my significance level of 0.05, I reject the null hypothesis that the average rating of recipes submitted in warmer seasons and colder seasons have the same distribution. Thus, I can say that the difference between the two groups of warmer and colder seasons is statisically significant and that the average ratings of recipes that were submitted in warmer seasons are higher than those that were submitted in colder seasons. I can infer that there is a correlation between the time of year when recipes were submitted and the ratings they receive. However, it is important to note that while there is an association between the season a recipe was submitted and its rating, this does not necessarily imply that submitting a recipe during a specific season will cause it to receive a higher rating.
 
 ## Framing a Prediction Problem
+
+I plan on predicting the average rating for a recipe which would typically be a regression problem. However, since a majority of the ratings fall between 4 and 5, I separated the average predictions into categories where an average rating of 0 to 1.9 is changed to 1, 2 to 2.9 is changed to 2, 3 to 3.9 is changed to 3, 4 to 4.9 is changed to 4, and everything larger becomes 5, thus making it a classification problem. More specifically, this is a multiclass classification because it involves predicting one of five possible classes unlike binary classification which has two possible values.
+
+I choose `average_rating` as the response variable because I want to be able to predict the rating a recipe may receive depending on certain features. At this time of the prediction, I would train my model on features from the columns in the dataframe that I already have such as `minutes`, `days_between`, `season_category` `num_calories`, `total_fat`, and `sugar`. 
+
+The metric I am choosing to evaluate my model is F1-score with weighted averaging because as I mentioned before and showed in the graph in univariabte analysis, a majority of the ratings fall between 4 and 5. By using this metric, the unbalanced ratings become balanced as it calculates the F1-score for each class independently then takes the weighted average.  
 
 ## Baseline Model
 
