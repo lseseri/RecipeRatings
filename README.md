@@ -130,6 +130,7 @@ A column in the dataset that I think is Not Missing At Random (NMAR) is the `rev
 I decided to test if the missingness of `rating` depends on the `season_submitted` column, which is the season the recipe was submitted. For this permutation test, I used a significance level of 0.05 and test statistic of total variation distance (TVD) because I needed to measure the distance between two categorical distributions.
 
 **Null Hypothesis: The distribution of the season when the recipe was submitted when rating is missing is the same as the distribution of the season when the recipe was submitted when the rating is not missing.**
+
 **Alternative Hypothesis: The distribution of the season when the recipe was submitted when rating is missing is not the same as the distribution of the season when the recipe was submitted when the rating is not missing.**
 
 <iframe
@@ -139,7 +140,7 @@ I decided to test if the missingness of `rating` depends on the `season_submitte
   frameborder="0"
 ></iframe>
 
-I ran the permuaation test by shuffling the `season_submitted` column 500 times to find different TVDs and compare that to my observed TVD of 0.039 which is show by the red line in the graph below. Since the p-value of 0 is less than the alpha 0f 0.05, I reject the null hypothesis. The distribution of seasons when a recipe was posted when a rating is missing is the same as the distribution when the rating is there. Thus, the permutation test does provide proof that the missingness of rating is dependent on the season the rating was submitting, making it MAR.  
+I ran the permuaation test by shuffling the `season_submitted` column 500 times to find different TVDs and compare that to my observed TVD of 0.039 which is show by the red line in the graph below. Since the p-value of 0.0 is less than the alpha 0f 0.05, I reject the null hypothesis. The distribution of seasons when a recipe was posted when a rating is missing is the same as the distribution when the rating is there. Thus, the permutation test does provide proof that the missingness of rating is dependent on the season the rating was submitting, making it MAR.  
 
 <iframe
   src="assets/missingness-emp-dist.html"
@@ -149,6 +150,27 @@ I ran the permuaation test by shuffling the `season_submitted` column 500 times 
 ></iframe>
 
 ## Hypothesis Testing
+
+I am curious on if the time of the year affects a recipe's average rating so I will be testing on whether the average rating is greater for warmer seasons consisting of summer and spring than colder seasons consisting of winter and fall. This investigation is significant because it will allow me to understand if seasonal trends do have an affect on the ratings of recipes. I will be using the columns `season_category` and `average_rating` for my test.
+
+**Test Statistic:** difference in group means (warm - cold)
+
+**Significance Level:** 0.05
+
+**Null Hypothesis:** In the population, the average rating of recipes submitted in warmer seasons (summer and spring) and colder seasons (winter and fall) have the same distribution, and the observed differences in our samples are due to random chance.
+
+**Alternative Hypothesis:** In the population, warmer seasons (summer and spring) have higher average ratings than colder seasons (winter and fall), and the observed difference in our samples cannot be explained by random chance alone.
+
+I decided to do a permuation test since I have two groups, the warmer seasons and colder seasons, and I am trying to determine if they look like they were drawn from the same population. I generated new data by shuffling the group labels of warm and cold and computing the test statistic of difference in group means for each shuffle. I choose difference in group means because it allows me to measure how different the two numerical distributions are by doing the mean average rating for warmer seasons minus the mean average rating for colder seasons.
+
+<iframe
+  src="assets/hyp_test-emp-dist.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+Since my p-value of 0.0, as shown by the red line in the distribution above, is less than my significance level of 0.05, I reject the null hypothesis that the average rating of recipes submitted in warmer seasons and colder seasons have the same distribution. Thus, I can say that the difference between the two groups of warmer and colder seasons is statisically significant and that the average ratings of recipes that were submitted in warmer seasons are higher than those that were submitted in colder seasons. I can infer that there is a correlation between the time of year when recipes were submitted and the ratings they receive. However, it is important to note that while there is an association between the season a recipe was submitted and its rating, this does not necessarily imply that submitting a recipe during a specific season will cause it to receive a higher rating.
 
 ## Framing a Prediction Problem
 
