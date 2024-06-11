@@ -82,11 +82,12 @@ I performed univariate analysis on the distribution of average ratings.
   height="600"
   frameborder="0"
 ></iframe>
-
 In this histogram, we can see that the graph is left skewed with a majority of the average ratings being between 4 and 5. This suggests that our data from food.com either includes only highly rated recipes or people on food.com, a majority of the time, tend to rate recipes higher than lower. 
 
 
 ### Bivariate Analysis
+
+I performed bivariate analysis on the relationship between the average rating of when a recipe was posted and the average rating of when a review was posted.
 
 <iframe
   src="assets/recipe_vs_rating-scatter-plot.html"
@@ -94,6 +95,7 @@ In this histogram, we can see that the graph is left skewed with a majority of t
   height="600"
   frameborder="0"
 ></iframe>
+In this scatter plot, we can see from looking at the x-axis that the season the review was posted is overall higher for spring and summer than winter and fall so it seems that when people post ratings in spring and summer, they tend to be more generous and rate higher than when people review in winter and fall. Also, from looking at the legend, we can see that generally the green and yellow dots which refer to spring and summer are higher than the other dots which refer to winter and fall, thus it appears that the seasons when recipes were posted in spring and summer recieve higher ratings than those posted in winter and fall. 
 
 ### Interesting Aggregates
 
