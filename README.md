@@ -84,7 +84,6 @@ I performed univariate analysis on the distribution of average ratings.
 ></iframe>
 In this histogram, we can see that the graph is left skewed with a majority of the average ratings being between 4 and 5. This suggests that our data from food.com either includes only highly rated recipes or people on food.com, a majority of the time, tend to rate recipes higher than lower. 
 
-
 ### Bivariate Analysis
 
 I performed bivariate analysis on the relationship between the average rating of when a recipe was posted and the average rating of when a review was posted.
@@ -95,9 +94,26 @@ I performed bivariate analysis on the relationship between the average rating of
   height="600"
   frameborder="0"
 ></iframe>
+<p style="margin-top: 0;">Your text here...</p>
 In this scatter plot, we can see from looking at the x-axis that the season the review was posted is overall higher for spring and summer than winter and fall so it seems that when people post ratings in spring and summer, they tend to be more generous and rate higher than when people review in winter and fall. Also, from looking at the legend, we can see that generally the green and yellow dots which refer to spring and summer are higher than the other dots which refer to winter and fall, thus it appears that the seasons when recipes were posted in spring and summer recieve higher ratings than those posted in winter and fall. 
 
 ### Interesting Aggregates
+
+I made a pivot table by grouping by the season the recipe was posted and review was posted then finding the mean of the average rating for each of these categories. It demonstrates how recipes that were posted in spring and summer seem to have higher average ratings than those posted in winter and fall.
+
+| season_interacted   |    fall |   spring |   summer |   winter |
+|:--------------------|--------:|---------:|---------:|---------:|
+| fall                | 4.66138 |  4.67628 |  4.67979 |  4.65328 |
+| spring              | 4.68286 |  4.69551 |  4.68407 |  4.6554  |
+| summer              | 4.67183 |  4.70875 |  4.69917 |  4.66939 |
+| winter              | 4.67354 |  4.67018 |  4.6773  |  4.64726 |
+
+I also grouped by the season category and found the mean to compare the differences between warm and cold seasons on how long it takes to prepare the recipes, the average rating of recipes, the number of calories of recipes, the total fat of recipes, the sugar of recipes, and the days between when a recipe was posted and a review was posted. What stood out to me was that in all these categories except the average rating, recipes posted in warmer seasons had a lower mean than colder seasons. For average ratings, recipes posted in warmer seasons, similar to what has been shown in the graphs, have a higher average rating than colder seasons. 
+
+| season_category   |   minutes |   average_rating |   num_calories |   total_fat |   sugar |   days_between |
+|:------------------|----------:|-----------------:|---------------:|------------:|--------:|---------------:|
+| cold              |  125.488  |          4.66172 |        426.51  |     32.3507 | 64.7016 |        730.202 |
+| warm              |   89.6232 |          4.69012 |        413.128 |     31.5245 | 63.0547 |        679.04  |
 
 ## Assessment of Missingness
 
