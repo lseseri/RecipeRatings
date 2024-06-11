@@ -129,9 +129,9 @@ A column in the dataset that I think is Not Missing At Random (NMAR) is the `rev
 
 I decided to test if the missingness of `rating` depends on the `season_submitted` column, which is the season the recipe was submitted. For this permutation test, I used a significance level of 0.05 and test statistic of total variation distance (TVD) because I needed to measure the distance between two categorical distributions.
 
-**Null Hypothesis: The distribution of the season when the recipe was submitted when rating is missing is the same as the distribution of the season when the recipe was submitted when the rating is not missing.**
+**Null Hypothesis:** The distribution of the season when the recipe was submitted when rating is missing is the same as the distribution of the season when the recipe was submitted when the rating is not missing.**
 
-**Alternative Hypothesis: The distribution of the season when the recipe was submitted when rating is missing is not the same as the distribution of the season when the recipe was submitted when the rating is not missing.**
+**Alternative Hypothesis:** The distribution of the season when the recipe was submitted when rating is missing is not the same as the distribution of the season when the recipe was submitted when the rating is not missing.
 
 <iframe
   src="assets/missingness-bar-plot.html"
