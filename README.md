@@ -209,7 +209,7 @@ To assess the fairness of my model, I aim to answer the question of whether my m
 <iframe
   src="assets/fairness-emp-dist.html"
   width="800"
-  height="600"
+  height="300"
   frameborder="0"
 ></iframe>
 
