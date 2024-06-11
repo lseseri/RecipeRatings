@@ -117,10 +117,36 @@ I also grouped by the season category and found the mean to compare the differen
 
 ## Assessment of Missingness
 
+In the merged dataset there are only three columns with missing values: `rating`, `review`, and `description`. 
+
 ### NMAR Analysis
+
+-look up and see if need to change word review to rating-
+
+A column in the dataset that I think is Not Missing At Random (NMAR) is the `review` column. Since people are typically more likely to submit a review and describe how they are feeling when they feel strongly about something such as when they are disappointed with a recipe or when they are pleased with a recipe, the fact that the review is missing could depend on the actual value missing. Thus, if a person was neutral about a recipe they will feel less inclined to spend their time leaving a description of how the recipe made them feel. Additional data I could obtain to explain the missingness and make it Missing At Random (MAR) is the `rating` column to see if the values that are missing are associated with the rating they left. Also, the time of day the review was posted could make it MAR. A rating is more likely to be missing if the time of day was late at night or early in the morning since the reviewer could be tired than if it was in the middle of the day. 
 
 ### Missingness Dependency
 
+I decided to test if the missingness of `rating` depends on the `season_submitted` column, which is the season the recipe was submitted. For this permutation test, I used a significance level of 0.05 and test statistic of total variation distance (TVD) because I needed to measure the distance between two categorical distributions.
+
+**Null Hypothesis: The distribution of the season when the recipe was submitted when rating is missing is the same as the distribution of the season when the recipe was submitted when the rating is not missing.**
+**Alternative Hypothesis: The distribution of the season when the recipe was submitted when rating is missing is not the same as the distribution of the season when the recipe was submitted when the rating is not missing.**
+
+<iframe
+  src="assets/missingness-bar-plot.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+I ran the permuaation test by shuffling the `season_submitted` column 500 times to find different TVDs and compare that to my observed TVD of 0.039 which is show by the red line in the graph below. Since the p-value of 0 is less than the alpha 0f 0.05, I reject the null hypothesis. The distribution of seasons when a recipe was posted when a rating is missing is the same as the distribution when the rating is there. Thus, the permutation test does provide proof that the missingness of rating is dependent on the season the rating was submitting, making it MAR.  
+
+<iframe
+  src="assets/missingness-emp-dist.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 ## Hypothesis Testing
 
