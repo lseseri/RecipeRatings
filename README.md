@@ -94,7 +94,7 @@ I performed bivariate analysis on the relationship between the average rating of
   height="600"
   frameborder="0"
 ></iframe>
-<p style="margin-top: 0;">Your text here...</p>
+<p style="margin-top: -20px;">Your text here...</p>
 In this scatter plot, we can see from looking at the x-axis that the season the review was posted is overall higher for spring and summer than winter and fall so it seems that when people post ratings in spring and summer, they tend to be more generous and rate higher than when people review in winter and fall. Also, from looking at the legend, we can see that generally the green and yellow dots which refer to spring and summer are higher than the other dots which refer to winter and fall, thus it appears that the seasons when recipes were posted in spring and summer recieve higher ratings than those posted in winter and fall. 
 
 ### Interesting Aggregates
@@ -116,6 +116,11 @@ I also grouped by the season category and found the mean to compare the differen
 | warm              |   89.6232 |          4.69012 |        413.128 |     31.5245 | 63.0547 |        679.04  |
 
 ## Assessment of Missingness
+
+### NMAR Analysis
+
+### Missingness Dependency
+
 
 ## Hypothesis Testing
 
