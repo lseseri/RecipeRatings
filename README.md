@@ -3,7 +3,7 @@
 ## Introduction
 Food is a fundamental aspect of human life, essential for survival. While some people eat food simply out of necessity, others savor the experience of trying new tastes and combining flavors to create something extraordinary. Regardless of what ones relationship with food is, exploring and analyzing different aspects of what makes recipes great is necessary. People often rely on ratings to choose foods and recipes, but the accuracy of these reviews can be questioned due to external factors affecting the reviewers' mood. One such factor is the season, as a gloomy, cold climate may evoke more negative emotions comparted to a warm, sunny climate. Thus, I posed the question of **how the time of the year a recipe is posted affects their given rating**. To investigate the relationship between seasons and ratings, I analyzed the two datasets consisting of recipe and ratings.
 
-The first dataset, `recipes`, consists of *83782 rows* where each row is a recipe, and 12 columns with the following information:
+The first dataset, `recipes`, consists of 83782 rows where each row is a recipe, and 12 columns with the following information:
 
 | Columns         | Description                                                                                                                                  |
 | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -20,7 +20,7 @@ The first dataset, `recipes`, consists of *83782 rows* where each row is a recip
 | `ingredients`     | List of ingredients required for the recipe                                                                                                  |
 | `n_ingredients`   | Number of ingredients required for the recipe                                                                                               |
 
-The second dataset, `interactions`, consists of *731927 rows* where each row is a review with a rating, and 5 columns with the following information:
+The second dataset, `interactions`, consists of 731927 rows where each row is a review with a rating, and 5 columns with the following information:
 
 | Columns     | Description          |
 | ----------- | -------------------- |
@@ -62,7 +62,7 @@ To clean my data, I followed the pillars of data cleaning which are performing d
 
 12. Finally, I created a clean version of my dataframe by including the columns `name`, `minutes`, `date_submitted`, `date_interacted`, `rating`, `average_rating`, `num_calories`, `total_fat`, `sugar`, `season_submitted`, `season_interacted`, `days_between`, `dayofweek_recipe`, and `dayofweek_review` as these were the columns that would help me answer my research question. 
 
-Below is the head of the finalized dataframe, `df`:
+Below is the first five rows of the finalized dataframe, `df`:
 
 | name                               |   minutes | date_submitted      | date_interacted     |   rating |   average_rating |   num_calories |   total_fat |   sugar | season_submitted   | season_category   | season_interacted   |   days_between | dayofweek_recipe   | dayofweek_review   |
 |:-----------------------------------|----------:|:--------------------|:--------------------|---------:|-----------------:|---------------:|------------:|--------:|:-------------------|:------------------|:--------------------|---------------:|:-------------------|:-------------------|
