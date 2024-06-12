@@ -122,8 +122,6 @@ In the merged dataset there are only three columns with missing values: `rating`
 
 ### NMAR Analysis
 
-## -look up and see if need to change word review to rating-
-
 A column in the dataset that I think is Not Missing At Random (NMAR) is the `review` column. Since people are typically more likely to submit a review and describe how they are feeling when they feel strongly about something such as when they are disappointed with a recipe or when they are pleased with a recipe, the fact that the review is missing could depend on the actual value missing. Thus, if a person was neutral about a recipe they will feel less inclined to spend their time leaving a description of how the recipe made them feel. Additional data I could obtain to explain the missingness and make it Missing At Random (MAR) is the `rating` column to see if the values that are missing are associated with the rating they left. Also, the time of day the review was posted could make it MAR. A rating is more likely to be missing if the time of day was late at night or early in the morning since the reviewer could be tired than if it was in the middle of the day. 
 
 ### Missingness Dependency
@@ -134,6 +132,8 @@ I decided to test if the missingness of `rating` depends on the `season_submitte
 
 **Alternative Hypothesis:** The distribution of the season when the recipe was submitted when rating is missing is not the same as the distribution of the season when the recipe was submitted when the rating is not missing.
 
+The graph below shows the distribution of when the rating is missing versus when the rating is not missing for the seasons a recipe was submitted.
+
 <iframe
   src="assets/missingness-bar-plot.html"
   width="800"
@@ -141,10 +141,43 @@ I decided to test if the missingness of `rating` depends on the `season_submitte
   frameborder="0"
 ></iframe>
 
-I ran the permuaation test by shuffling the `season_submitted` column 500 times to find different TVDs and compare that to my observed TVD of 0.039 which is show by the red line in the graph below. Since the p-value of 0.0 is less than the alpha 0f 0.05, I reject the null hypothesis. The distribution of seasons when a recipe was posted when a rating is missing is the same as the distribution when the rating is there. Thus, the permutation test does provide proof that the missingness of rating is dependent on the season the rating was submitting, making it MAR.  
+I ran the permuation test by shuffling the `season_submitted` column 500 times to generate different TVDs and compare these to my observed TVD of 0.039, which is shown by the red line in the graph below. Since the p-value of 0.0 is less than the alpha 0f 0.05, I reject the null hypothesis. The distribution of seasons when a recipe was posted when a rating is missing is not the same as the distribution when the rating is there. Thus, the permutation test does provide proof that the missingness of rating is dependent on the season the rating was submitting, making it MAR.  
 
 <iframe
   src="assets/missingness-emp-dist.html"
+  width="800"
+  height="416"
+  frameborder="0"
+></iframe>
+
+Next, I wanted to test if the missingness of `rating` depends on the `mintues` column, which is how long it takes to make a recipe. For this permutation test, I used a significant level of 0.05. To determine what test statistic to use I created a graph to compare the null and non-null rating distribution on how long it took to make the recipe. 
+
+<iframe
+  src="assets/missingness-min-dist-1.html"
+  width="800"
+  height="416"
+  frameborder="0"
+></iframe>
+
+In the initial graph above, it is difficult to determine the effect missing ratings have on the time it took to make a recipe due to the presense of outliers. Some data points indicate that it took over 6000 minutes or 250 days to create, which seems implausible. To address this, I removed these extreme values and created a new graph for better clarity.
+
+<iframe
+  src="assets/missingness-min-dist-2.html"
+  width="800"
+  height="416"
+  frameborder="0"
+></iframe>
+
+In the new graph, the distribution of recipe times, whether the rating was missing or not, appear to be similar. Therefore, I decided to use absolute difference in means as my test statistic which is typically used if the two distributions have similar shapes.
+
+**Null Hypothesis:** The distribution of minutes take to make recipe when rating is missing is the same as the distribution of minutes take to make recipe when the rating is not missing.
+
+**Alternative Hypothesis:** The distribution of minutes take to make recipe when rating is missing is not the same as the distribution of minutes take to make recipe when the rating is not missing.
+
+I ran the permuation test by shuffling the `rating` column 500 times to generate new absolute difference in mean values and compare these to my observed absolute difference in mean of 51.480, which is shown by the red line in the graph below. Since the p-value of 0.106 is greater than the alpha 0f 0.05, I fail to reject the null hypothesis. The distribution of minutes when a rating is missing is the same as when a rating is not missing. Thus, the permutation test does not provide proof that the missingness of rating is dependent on how long it takes to make a recipe, making it Missing Completely At Random (MCAR). 
+
+<iframe
+  src="assets/missingness-min-emp-dist.html"
   width="800"
   height="416"
   frameborder="0"
