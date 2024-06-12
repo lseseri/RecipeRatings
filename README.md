@@ -166,7 +166,7 @@ I decided to do a permuation test since I have two groups, the warmer seasons an
 <iframe
   src="assets/hyp_test-emp-dist.html"
   width="800"
-  height="415"
+  height="416"
   frameborder="0"
 ></iframe>
 
@@ -209,7 +209,7 @@ To assess the fairness of my model, I aim to answer the question of whether my m
 <iframe
   src="assets/fairness-emp-dist.html"
   width="800"
-  height="415"
+  height="418"
   frameborder="0"
 ></iframe>
 
