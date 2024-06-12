@@ -82,6 +82,7 @@ I performed univariate analysis on the distribution of average ratings.
   height="600"
   frameborder="0"
 ></iframe>
+
 In this histogram, we can see that the graph is left skewed with a majority of the average ratings being between 4 and 5. This suggests that our data from food.com either includes only highly rated recipes or people on food.com, a majority of the time, tend to rate recipes higher than lower. 
 
 ### Bivariate Analysis
@@ -91,10 +92,10 @@ I performed bivariate analysis on the relationship between the average rating of
 <iframe
   src="assets/recipe_vs_rating-scatter-plot.html"
   width="800"
-  height="600"
+  height="416"
   frameborder="0"
 ></iframe>
-<p style="margin-top: -20px;">Your text here...</p>
+
 In this scatter plot, we can see from looking at the x-axis that the season the review was posted is overall higher for spring and summer than winter and fall so it seems that when people post ratings in spring and summer, they tend to be more generous and rate higher than when people review in winter and fall. Also, from looking at the legend, we can see that generally the green and yellow dots which refer to spring and summer are higher than the other dots which refer to winter and fall, thus it appears that the seasons when recipes were posted in spring and summer recieve higher ratings than those posted in winter and fall. 
 
 ### Interesting Aggregates
@@ -136,7 +137,7 @@ I decided to test if the missingness of `rating` depends on the `season_submitte
 <iframe
   src="assets/missingness-bar-plot.html"
   width="800"
-  height="600"
+  height="416"
   frameborder="0"
 ></iframe>
 
@@ -145,7 +146,7 @@ I ran the permuaation test by shuffling the `season_submitted` column 500 times 
 <iframe
   src="assets/missingness-emp-dist.html"
   width="800"
-  height="600"
+  height="416"
   frameborder="0"
 ></iframe>
 
@@ -209,7 +210,7 @@ To assess the fairness of my model, I aim to answer the question of whether my m
 <iframe
   src="assets/fairness-emp-dist.html"
   width="800"
-  height="418"
+  height="416"
   frameborder="0"
 ></iframe>
 
