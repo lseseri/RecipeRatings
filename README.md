@@ -79,7 +79,7 @@ I performed univariate analysis on the distribution of average ratings.
 <iframe
   src="assets/fig_rating-hist-plot.html"
   width="800"
-  height="600"
+  height="416"
   frameborder="0"
 ></iframe>
 
