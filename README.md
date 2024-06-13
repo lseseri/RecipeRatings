@@ -150,7 +150,7 @@ I ran the permuation test by shuffling the `season_submitted` column 500 times t
   frameborder="0"
 ></iframe>
 
-Next, I wanted to test if the missingness of `rating` depends on the `mintues` column, which is how long it takes to make a recipe. For this permutation test, I used a significant level of 0.05. To determine what test statistic to use I created a graph to compare the null and non-null rating distribution on how long it took to make the recipe. 
+Next, I wanted to test if the missingness of `rating` depends on the `minutes` column, which is how long it takes to make a recipe. For this permutation test, I used a significance level of 0.05. To determine what test statistic to use, I created a graph to compare the null and non-null rating distribution on how long it took to make the recipe. 
 
 <iframe
   src="assets/missingness-min-dist-1.html"
@@ -185,15 +185,15 @@ I ran the permuation test by shuffling the `rating` column 500 times to generate
 
 ## Hypothesis Testing
 
-I am curious on if the time of the year affects a recipe's average rating so I will be testing on whether the average rating is greater for warmer seasons consisting of summer and spring than colder seasons consisting of winter and fall. This investigation is significant because it will allow me to understand if seasonal trends do have an affect on the ratings of recipes. I will be using the columns `season_category` and `average_rating` for my test.
-
-**Test Statistic:** difference in group means (warm - cold)
-
-**Significance Level:** 0.05
+I am curious on if the time of the year affects a recipe's average rating so I will be testing whether the average rating is greater for warmer seasons consisting of summer and spring than colder seasons consisting of winter and fall. This investigation is significant because it will allow me to understand if seasonal trends do have an affect on the ratings of recipes. I will be using the columns `season_category` and `average_rating` for my test.
 
 **Null Hypothesis:** In the population, the average rating of recipes submitted in warmer seasons (summer and spring) and colder seasons (winter and fall) have the same distribution, and the observed differences in our samples are due to random chance.
 
 **Alternative Hypothesis:** In the population, warmer seasons (summer and spring) have higher average ratings than colder seasons (winter and fall), and the observed difference in our samples cannot be explained by random chance alone.
+
+**Test Statistic:** difference in group means (warm - cold)
+
+**Significance Level:** 0.05
 
 I decided to do a permuation test since I have two groups, the warmer seasons and colder seasons, and I am trying to determine if they look like they were drawn from the same population. I generated new data by shuffling the group labels of warm and cold and computing the test statistic of difference in group means for each shuffle. I choose difference in group means because it allows me to measure how different the two numerical distributions are by doing the mean average rating for warmer seasons minus the mean average rating for colder seasons.
 
@@ -208,23 +208,31 @@ Since my p-value of 0.0, as shown by the red line in the distribution above, is 
 
 ## Framing a Prediction Problem
 
-I plan on predicting the average rating for a recipe which would typically be a regression problem. However, since a majority of the ratings fall between 4 and 5, I separated the average predictions into categories where an average rating of 0 to 1.9 is changed to 1, 2 to 2.9 is changed to 2, 3 to 3.9 is changed to 3, 4 to 4.9 is changed to 4, and everything larger becomes 5, thus making it a classification problem. More specifically, this is a multiclass classification because it involves predicting one of five possible classes unlike binary classification which has two possible values.
+I plan on predicting the average rating for a recipe which would typically be a regression problem, however, since a majority of the ratings fall between 4 and 5, I separated the average predictions into categories. An average rating of 0 to 1.9 is changed to 1, 2 to 2.9 is changed to 2, 3 to 3.9 is changed to 3, 4 to 4.9 is changed to 4, and everything larger becomes 5, thus making it a classification problem. More specifically, this is a multiclass classification because it involves predicting one of five possible classes unlike binary classification which has two possible values.
 
-I choose `average_rating` as the response variable because I want to be able to predict the rating a recipe may receive depending on certain features. At this time of the prediction, I would train my model on features from the columns in the dataframe that I already have such as `minutes`, `days_between`, `season_category` `num_calories`, `total_fat`, and `sugar`. 
+I choose `average_rating` as the response variable because I want to be able to predict the rating a recipe may receive depending on certain features. At this time of the prediction, I would train my model on features from the columns in the dataframe that I already have such as `minutes`, `days_between`, `season_category`, `season_submitted`, `num_calories`, `total_fat`, and `sugar`. 
 
-The metric I am choosing to evaluate my model is F1-score with weighted averaging because as I mentioned before and showed in the graph in univariabte analysis, a majority of the ratings fall between 4 and 5. By using this metric, the unbalanced ratings become balanced as it calculates the F1-score for each class independently then takes the weighted average.  
+The metric I am choosing to evaluate my model is F1-score with weighted averaging because as I mentioned before and showed in the graph in univariate analysis, a majority of the ratings fall between 4 and 5. By using this metric, the unbalanced ratings become balanced as it calculates the F1-score for each class independently then takes the weighted average.  
 
 ## Baseline Model
 
-For my baseline model, I began by dropping rows from the `mintues` and `average_rating` columns that contained missing values as this information was not available at the time of prediction. I also dropped the `rating` column from the df because I am predicting the average rating which is based on the rating so having both columns would be redundant. I choose three features based on the `minutes`, `days_between`, and `sugar` columns in my df. I choose three quantitative columns for my model because as seen in previous sections like data analysis or missingness analysis, the `minutes` and `days_between` seem to have an association with a recipes's average rating. I included the `sugar` column as well because I wanted to determine if the sugar a recipe has would also affect a recipe's rating.
+For my baseline model, I began by dropping rows from the `mintues` and `average_rating` columns that contained missing values as this information was not available at the time of prediction. I also dropped the `rating` column from the df because I am predicting the average rating which is based on the rating so having both columns would be redundant. I chose three features based on the `minutes`, `days_between`, and `sugar` columns in my df. I chose three quantitative columns for my model because as seen in previous sections like data analysis or missingness analysis, the `minutes` and `days_between` seem to have an association with a recipes's average rating. I included the `sugar` column as well because I wanted to determine if the sugar a recipe has would also affect a recipe's rating.
 
-As I mentioned in the framing a prediction problem section, I made average ratings into categories and added these values to a new column called `avg_rating_cat`. I then split the data into training and test data using the above columns as my features and `avg_rating_cat` as the value I am predicting. After looking at the values contained in each of my features, I realized that the `minutes` and `days_between` features contain a majority of values closer to zero with some outliers. To account for this I converted both continuous numerical columns into discrete categories. I transformed the `minutes` column using custom binning where I categorized them into five descriptive categories (very short, short, medium, long, very long) based on how long it takes to make a given recipe. Similarly, I transformed the `days_between` column using custom binning where I categorized them into the same description categories as `minutes` based on how long it takes to post a review for a recipe. For both these features, I then used ordinal encoding to map these categories into numbers in a way that preserves order where 0 was very short up till 4 for very long. I can do this because shorter recipes and quicker review times are more valuable than longer recipes and long review times. I used `FunctionTransfomer` to apply these transformations. For the `sugar` feature, I used `StandardScalar` to standardize the numerical data. I then used a `DecisionTreeClassifier` to classify my model. 
+As I mentioned in the framing a prediction problem section, I made average ratings into categories and added these values to a new column called `avg_rating_cat`. I then split the data into training and test data using the above columns as my features and `avg_rating_cat` as the value I am predicting. After looking at the values contained in each of my features, I realized that the `minutes` and `days_between` features contain a majority of values closer to zero with some outliers. To account for this I converted both continuous numerical columns into discrete categories. I transformed the `minutes` column using custom binning where I categorized them into five descriptive categories (very short, short, medium, long, very long) based on how long it takes to make a given recipe. Similarly, I transformed the `days_between` column using custom binning where I categorized them into the same description categories as `minutes` based on how long it takes to post a review for a recipe. For both these features, I then used ordinal encoding to map these categories into numbers in a way that preserves order where 0 was very short up till 4 for very long. I chose this approach because shorter recipes and quicker review times are generally more practical and appealing for users as they are more efficient and convenient making it more valuable than longer recipes and extended review times which are less attractive to people because they require more time and effort. I used `FunctionTransfomer` to apply these transformations. For the `sugar` feature, I used `StandardScalar` to standardize the numerical data. I then used a `DecisionTreeClassifier` to classify my model. 
 
 The performance of this model was not that good as I got an overall F1-score of 0.534 suggesting that there is room for improvement by adding more features that are more correlated to predicting average rating.
 
 ## Final Model 
 
-I added three features to my final model which were `num_calories`, `total_fat`, and `season_category` as well as the features from the baseline model, `minutes`, `days_between`, and `sugar`. The column `num_calories` is the total number of calories a recipe contains. As shown in the pivot table created in the framing a prediction model section, it seems that the number of calories a recipe has is correlated with the average rating the recipe gets. Thus, I believe adding this feature improved my model because people tend to look for healthier receipes so those with lower amounts of calories could be predicted to receive better ratings. I used `StandardScalar` to transform the feature and make it more generalizable. The column `total_fat` is the total amount of fat put into a recipe. Similar to `num_calories`, the pivot table showed that a lower number of calories are typically associated with a higher rating. Also, health consious people are more likely to try and rate foods that have a lower amount of fat in it. For these reasons, I beleive that this feature would improve the performance of my model. I transformed this feature using `StandardScalar`. The column `season_category` is the weather type a receipe was posted during with values being either warm or cold. As shown in the hypothesis testing section, I found that recipes posted during warmer seasons tend to receive higher ratings. So, I thought adding this feature would improve my model's performance due to the correlation, and a person may be happier during warmer weather than cold weather encouraging them to rate recipes more generously. I used `OneHotEncoder` to transform the categorical values into binary features. 
+I added four features to my final model which were `num_calories`, `total_fat`, `season_category`, and `season_submitted` as well as the features from the baseline model, `minutes`, `days_between`, and `sugar`. 
+
+The column `num_calories` is the total number of calories a recipe contains. As shown in the pivot table created in the framing a prediction model section, it seems that the number of calories a recipe has is correlated with the average rating the recipe gets. Thus, I believe adding this feature improved my model because people tend to look for healthier receipes so those with lower amounts of calories could be predicted to receive better ratings. I used `StandardScalar` to transform the feature and make it more generalizable. 
+
+The column `total_fat` is the total amount of fat put into a recipe. Similar to `num_calories`, the pivot table showed that a lower number of calories are typically associated with a higher rating. Also, health consious people are more likely to try and rate foods that have a lower amount of fat in it. For these reasons, I believe that this feature would improve the performance of my model. I transformed this feature using `StandardScalar`. 
+
+The column `season_category` is the weather type associated with the season a receipe was posted during with values being either warm or cold. As shown in the hypothesis testing section, I found that recipes posted during warmer seasons tend to receive higher ratings. So, I thought adding this feature would improve my model's performance due to the correlation, and a person may be happier during warmer weather than cold weather encouraging them to rate recipes more generously. I used `OneHotEncoder` to transform the categorical values into binary features. 
+
+Similarly, the column `season_submitted` indicates the season in which a recipe was posted. Based on findings from hypothesis testing and bivariate analysis which indicated that there is a relationship between the season a recipe was posted and the review, I believed that adding this feature would improve my model's predictive capabilities. I also used `OneHotEncoder` to transform the catergorical values of spring, summer, winter, and fall into binary features.
 
 I choose to use a `DecisionTreeClassifier` and performed k-fold cross-validation using `GridSearchCV` to find the best combination of hyperparameters with the best average validation performance. For my model, the hyperparameters that performed the best were `criterion` of gini, `max_depth` of 54, and `min_samples_split` of 2. My F1-score for my final model is 0.796 showing that there was an improvement over my baseline model which had an F1-score of 0.534. 
 
@@ -232,13 +240,13 @@ I choose to use a `DecisionTreeClassifier` and performed k-fold cross-validation
 
 To assess the fairness of my model, I aim to answer the question of whether my model performs better for warmer or colder seasons. Thus my two groups will be based on the `season_category` column, and I will be determining if my model performs better for recipes that were posted during warmer seasons than recipes that were posted during colder seasons. I performed a permutation test using accuracy parity as my evaluation method because the classes have roughly equal number in both classes so they are balanced. I randomly shuffled the `season_category` column 1000 times and computing the accuracy parity each time. 
 
-**Test Statistic:** difference in accuracy (warm - cold)
-
-**Significance Level:** 0.05
-
 **Null Hypothesis:** The classifier's accuracy is the same for both recipes posted in warm seasons and cold seasons, and any differences are due to chance.
 
 **Alternative Hypothesis:** The classifier's accuracy is higher for warmer seasons.
+
+**Test Statistic:** difference in accuracy (warm - cold)
+
+**Significance Level:** 0.05
 
 <iframe
   src="assets/fairness-emp-dist.html"
